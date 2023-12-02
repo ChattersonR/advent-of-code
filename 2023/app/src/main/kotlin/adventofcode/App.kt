@@ -4,6 +4,7 @@
 package adventofcode
 
 import adventofcode.dayone.TrebuchetCalibration
+import adventofcode.daytwo.CubeGame
 
 class App {
     val greeting: String
@@ -20,4 +21,12 @@ fun main() {
     App::class.java.getResource("/trebuchetCalibrationInput.txt")?.openStream()?.bufferedReader()?.lines()?.forEach({inputList.add(it)})
     val result = trebuchetCalibration.process(inputList.toList())
     println("Day 1 - Trebuchet Calibration: $result")
+
+    val cubeInputList: MutableList<String> = mutableListOf()
+    App::class.java.getResource("/cubeGameInput.txt")?.openStream()?.bufferedReader()?.lines()?.forEach({cubeInputList.add(it)})
+    val cubeGame: CubeGame = CubeGame(cubeInputList)
+    val cubeResult = cubeGame.sumPossibleGames(mapOf("red" to 12, "green" to 13, "blue" to 14))
+    val cubePowerSum = cubeGame.powerSum()
+    println("Day 2 - Cube Game Sum: $cubeResult")
+    println("Day 2 - Cube Game Power Sum: $cubePowerSum")
 }
