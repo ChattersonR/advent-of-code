@@ -4,6 +4,7 @@
 package adventofcode
 
 import adventofcode.dayone.TrebuchetCalibration
+import adventofcode.daythree.GearRatios
 import adventofcode.daytwo.CubeGame
 
 class App {
@@ -18,15 +19,31 @@ fun main() {
 
     val trebuchetCalibration: TrebuchetCalibration = TrebuchetCalibration()
     val inputList: MutableList<String> = mutableListOf()
-    App::class.java.getResource("/trebuchetCalibrationInput.txt")?.openStream()?.bufferedReader()?.lines()?.forEach({inputList.add(it)})
+    App::class.java.getResource("/trebuchetCalibrationInput.txt")?.openStream()?.bufferedReader()?.lines()?.forEach {
+        inputList.add(it)
+    }
     val result = trebuchetCalibration.process(inputList.toList())
     println("Day 1 - Trebuchet Calibration: $result")
 
     val cubeInputList: MutableList<String> = mutableListOf()
-    App::class.java.getResource("/cubeGameInput.txt")?.openStream()?.bufferedReader()?.lines()?.forEach({cubeInputList.add(it)})
+    App::class.java.getResource("/cubeGameInput.txt")?.openStream()?.bufferedReader()?.lines()?.forEach {
+        cubeInputList.add(it)
+    }
     val cubeGame: CubeGame = CubeGame(cubeInputList)
     val cubeResult = cubeGame.sumPossibleGames(mapOf("red" to 12, "green" to 13, "blue" to 14))
     val cubePowerSum = cubeGame.powerSum()
     println("Day 2 - Cube Game Sum: $cubeResult")
     println("Day 2 - Cube Game Power Sum: $cubePowerSum")
+
+    val gearRatioList: MutableList<String> = mutableListOf()
+    App::class.java.getResource("/gearRatioInput.txt")?.openStream()?.bufferedReader()?.lines()?.forEach {
+        gearRatioList.add(it)
+    }
+    val gearRatio: GearRatios = GearRatios(gearRatioList)
+    val partsSum = gearRatio.sumPartNumbers()
+    val gearRatioSum = gearRatio.sumGearRatio()
+    println("Day 3 - Gear Ratio Part Sum: $partsSum")
+    println("Day 3 - Gear Ratio Gear Sum: $gearRatioSum")
+
+
 }
