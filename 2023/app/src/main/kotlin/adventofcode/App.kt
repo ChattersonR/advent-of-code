@@ -3,6 +3,7 @@
  */
 package adventofcode
 
+import adventofcode.dayfour.Scratchcards
 import adventofcode.dayone.TrebuchetCalibration
 import adventofcode.daythree.GearRatios
 import adventofcode.daytwo.CubeGame
@@ -35,15 +36,23 @@ fun main() {
     println("Day 2 - Cube Game Sum: $cubeResult")
     println("Day 2 - Cube Game Power Sum: $cubePowerSum")
 
-    val gearRatioList: MutableList<String> = mutableListOf()
-    App::class.java.getResource("/gearRatioInput.txt")?.openStream()?.bufferedReader()?.lines()?.forEach {
-        gearRatioList.add(it)
-    }
-    val gearRatio: GearRatios = GearRatios(gearRatioList)
+    val gearRatio: GearRatios = GearRatios(readInputAsStringList("/gearRatioInput.txt"))
     val partsSum = gearRatio.sumPartNumbers()
     val gearRatioSum = gearRatio.sumGearRatio()
     println("Day 3 - Gear Ratio Part Sum: $partsSum")
     println("Day 3 - Gear Ratio Gear Sum: $gearRatioSum")
 
+    val scratchcards = Scratchcards(readInputAsStringList("/scratchcardsInput.txt"))
+    val pointSum = scratchcards.sumPoints()
+    println("Day 4: Scratchcards Point Sum: $pointSum")
+    println("Day 4: Scratchcards Card Count: ${scratchcards.sumCards()}")
+}
 
+fun readInputAsStringList(path: String): List<String> {
+    val returnList: MutableList<String> = mutableListOf()
+    App::class.java.getResource(path)?.openStream()?.bufferedReader()?.lines()?.forEach {
+        returnList.add(it)
+    }
+
+    return returnList
 }
