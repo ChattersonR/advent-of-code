@@ -3,6 +3,7 @@
  */
 package adventofcode
 
+import adventofcode.dayfive.SeedAlmanac
 import adventofcode.dayfour.Scratchcards
 import adventofcode.dayone.TrebuchetCalibration
 import adventofcode.daythree.GearRatios
@@ -46,6 +47,10 @@ fun main() {
     val pointSum = scratchcards.sumPoints()
     println("Day 4: Scratchcards Point Sum: $pointSum")
     println("Day 4: Scratchcards Card Count: ${scratchcards.sumCards()}")
+
+    val almanac = SeedAlmanac(readInputAsStringList("/seedAlmanacInput.txt"))
+    println("Day 5: Almanac Lowest Location: ${almanac.lowestLocation()}")
+    println("Day 5: Almanac Lowest Location Ranges: ${almanac.lowestLocationOfRanges()}")
 }
 
 fun readInputAsStringList(path: String): List<String> {
