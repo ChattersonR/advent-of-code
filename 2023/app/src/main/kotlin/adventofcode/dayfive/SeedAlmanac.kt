@@ -71,9 +71,6 @@ class SeedAlmanac(input: List<String>) {
                 var testRange: LongRange? = range
                 var index = 0
                 while(testRange != null && index < mapping.size) {
-                    println(testRange.first)
-                    println(mapping[index].sourceRange)
-                    println((testRange.first  in mapping[index].sourceRange))
                     if( testRange.first in mapping[index].sourceRange ) {
                         if( testRange.last in mapping[index].sourceRange) {
                             tmpRanges.add(calculateMapping(mapping[index], testRange.first)..calculateMapping(mapping[index], testRange.last))
@@ -84,12 +81,13 @@ class SeedAlmanac(input: List<String>) {
                         }
                     } else if (testRange.last in mapping[index].sourceRange) {
                         tmpRanges.add(calculateMapping(mapping[index], mapping[index].sourceRange.first)..calculateMapping(mapping[index], testRange.last))
-                        testRange = null
+                        testRange = testRange.first..<mapping[index].sourceRange.first
                     }
                     index++
                 }
-                if(testRange != null)
+                if(testRange != null) {
                     tmpRanges.add(testRange)
+                }
             }
             intermediateRanges = tmpRanges
         }
