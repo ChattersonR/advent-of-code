@@ -3,9 +3,12 @@
  */
 package adventofcode
 
+import adventofcode.dayeight.HauntedWasteland
 import adventofcode.dayfive.SeedAlmanac
 import adventofcode.dayfour.Scratchcards
+import adventofcode.daynine.Mirage
 import adventofcode.dayone.TrebuchetCalibration
+import adventofcode.dayseven.CamelCards
 import adventofcode.daysix.BoatRace
 import adventofcode.daythree.GearRatios
 import adventofcode.daytwo.CubeGame
@@ -56,6 +59,18 @@ fun main() {
     val boatRaces = BoatRace(readInputAsStringList("/boatRaceInput.txt"))
     println("Day 6: Boat Race Margin: ${boatRaces.calculateMargin()}")
     println("Day 6: Boat Race Big Race: ${boatRaces.calculateSingleRace()}")
+
+    val camelCards = CamelCards(readInputAsStringList("/camelCardInput.txt"))
+    println("Day 7: Camel Card Winnings: ${camelCards.totalWinnings()}")
+    println("Day 7: Camel Card Winnings Joker: ${camelCards.totalWinningsWithJokers()}")
+
+    val hauntedWasteland = HauntedWasteland(readInputAsStringList("/hauntedWastelandInput.txt"))
+    println("Day 8: Haunted Wasteland Steps: ${hauntedWasteland.stepsToEnd("AAA")}")
+    println("Day 8: Haunted Wasteland Ghost Steps: ${hauntedWasteland.ghostSteps()}")
+
+    val mirage = Mirage(readInputAsStringList("/mirageInput.txt"))
+    println("Day 9: Mirage Extrapolated Sum: ${mirage.extrapolatesSum()}")
+    println("Day 9: Mirage Extrapolated Sum Steps: ${mirage.extrapolatesBeginningSum()}")
 }
 
 fun readInputAsStringList(path: String): List<String> {
